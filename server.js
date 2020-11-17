@@ -9,7 +9,7 @@ const databaseUrl = "budget";
 const collections = ["transactions"];
 const db = mongojs(databaseUrl, collections);
 
-const PORT = 3000;
+var PORT = process.env.PORT || 3000;
 
 const app = express();
 
