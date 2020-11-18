@@ -9,7 +9,7 @@ const databaseUrl = "budget";
 const collections = ["transactions"];
 const db = mongojs(databaseUrl, collections);
 
-var PORT = process.env.PORT || 3000;
+var PORT = process.env.PORT || 8080;
 
 const app = express();
 
@@ -39,3 +39,13 @@ db.newdatabase.insert({
   "title": ["item 1", "item2", "item3"],
   "country": "this is country"
 })
+
+app.get("/all", (req, res) => {
+  db.newdatabase.find({}, (error, found) => {
+    if (error) {
+      console.log(error);
+    } else {
+      res.json(found);
+    }
+  });
+});
