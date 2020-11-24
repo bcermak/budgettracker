@@ -135,25 +135,6 @@ function sendTransaction(isAdding) {
     }
   })
   .catch(err => {
-    if (err){ 
-      const request = window.indexedDB.open("offlineDB", 1);
-
-      request.onupgradeneeded = event => {
-        let db = event.target.result;
-
-        let objectStore = db.createObjectStore("offlineBudget", { keyPath: "ssn" });
-
-        objectStore.createIndex("name", "name", { unique: false });
-
-        objectStore.transaction.oncomplete = function(event) {
-          // Store values in the newly created objectStore.
-          let budgetObjectStore = db.transaction("name", "readwrite").objectStore("offlineBudget");
-          nameEl.forEach(function(nameEl) {
-            budgetObjectStore.add(nameEl);
-          });
-        };
-      }
-    };
     // fetch failed, so save in indexed db
     saveRecord(transaction);
 
