@@ -21,7 +21,7 @@ app.use(express.json());
 
 app.use(express.static("public"));
 
-mongoose.connect(`mongodb+srv://bcermak:${process.env.mongopass}@cluster0.t0gse.mongodb.net/budget?retryWrites=true&w=majority`, {
+mongoose.connect(`mongodb+srv://bcermak:${process.env.mongopass}@cluster0.t0gse.mongodb.net/BudgetTracker?retryWrites=true&w=majority`, {
   useNewUrlParser: true,
   useFindAndModify: false
 });
