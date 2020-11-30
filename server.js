@@ -21,16 +21,16 @@ app.use(express.json());
 
 app.use(express.static("public"));
 
-mongoose.connect(`mongodb+srv://bcermak:${process.env.mongopass}@cluster0.t0gse.mongodb.net/budget?retryWrites=true&w=majority`, {
-  useNewUrlParser: true,
-  useFindAndModify: false
-});
-
-// mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/budget", {
+// mongoose.connect(`mongodb+srv://bcermak:${process.env.mongopass}@cluster0.t0gse.mongodb.net/budget?retryWrites=true&w=majority` || "mongodb://localhost/budget", {
 //   useNewUrlParser: true,
-//   useFindAndModify: false,
-
+//   useFindAndModify: false
 // });
+
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/budget", {
+  useNewUrlParser: true,
+  useFindAndModify: false,
+
+});
 
 // routes
 app.use(require("./routes/api.js"));
