@@ -19,7 +19,7 @@ app.use(compression());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.use(express.static("public"));
+if (process.env.NODE_ENV === "production") {  app.use(express.static("client/build"));}
 
 mongoose.connect(`mongodb+srv://bcermak:${process.env.mongopass}@cluster0.t0gse.mongodb.net/budget?retryWrites=true&w=majority`, {
   useNewUrlParser: true,
