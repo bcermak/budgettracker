@@ -2,12 +2,6 @@ const express = require("express");
 const logger = require("morgan");
 const mongoose = require("mongoose");
 const compression = require("compression");
-const mongojs = require("mongojs");
-
-
-const databaseUrl = "budget";
-const collections = ["transactions"];
-const db = mongojs(databaseUrl, collections);
 
 var PORT = process.env.PORT || 8080;
 
